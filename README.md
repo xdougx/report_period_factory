@@ -38,7 +38,7 @@ class CompanyReport < Company
     select("sum(sales.total) total, ...")
       .joins(:sales)
         .where(company_id: 1)
-          .build_period(:current_month, params)
+          .build_period(:current_month, date_attr: 'date_in', period_method: 'daily')
   end
 end
 ```
