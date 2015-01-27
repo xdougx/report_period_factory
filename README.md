@@ -35,7 +35,7 @@ class CompanyReport < Company
   include ReportModules::PeriodFactory
   
   def self.average_sales params
-    select("sum(sales.total) total, ...")
+    select("sum(sales.total) as total, ...")
       .joins(:sales)
         .where(company_id: 1)
           .build_period(:current_month, date_attr: 'date_in', period_method: 'daily')
